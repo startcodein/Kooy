@@ -1,29 +1,14 @@
-/* @flow */
-
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import { Root, Tabs } from './config/router';
 
 export default class Kooy extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>I'm the Kooy component</Text>
-        <Text>I'm the Kooy component</Text>
-        <Text>I'm the Kooy component</Text>
-        <Text>I'm the Kooy component</Text>
-        <Text>I'm the Kooy component</Text>
-        <Text>I'm the Kooy component</Text>
-      </View>
-    );
+    return <Tabs />;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+// });
