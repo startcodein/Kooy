@@ -17,7 +17,7 @@ export const Tabs = TabNavigator({
   English: {
     screen: Home,
     navigationOptions: {
-      tabBarLabel: 'English',
+      tabBarLabel: 'കലണ്ടർ',
       tabBarIcon: ({ tintColor }) => <Icon
         name="calendar" type='evilicon' size={35} color={tintColor}
       />
@@ -26,7 +26,7 @@ export const Tabs = TabNavigator({
   Saved: {
     screen: Home,
     navigationOptions: {
-      tabBarLabel: 'favorite articles',
+      tabBarLabel: 'പ്രിയപ്പെട്ടവ',
       tabBarIcon: ({ tintColor }) => <Icon
         name='heart' type='evilicon' size={39} color={tintColor}
       />
