@@ -6,7 +6,7 @@ export default class Kooy extends Component {
     return <Tabs />;
   }
 }
-
+console.disableYellowBox = true;
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
