@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Root, Tabs } from './config/router';
+import { createRootNavigator } from './config/router';
 
 export default class Kooy extends Component {
   render() {
-    return <Tabs />;
+    const Layout = createRootNavigator();
+    return <Layout />;
   }
 }
 console.disableYellowBox = true;

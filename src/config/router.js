@@ -1,13 +1,15 @@
 import React from 'react';
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import { Button } from 'react-native';
+import { TabNavigator, StackNavigator, SwitchNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
+import Register from './../components/Register';
 import Home from './../components/Home';
 import Calendar from './../components/Calendar';
 import Favourite from './../components/Favourite';
 import Settings from './../components/Settings';
 
-export const Tabs = TabNavigator({
+export const App = TabNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
@@ -43,7 +45,7 @@ export const Tabs = TabNavigator({
         name="gear" type="evilicon" size={33} color={tintColor}
       />
     },
-  },
+  }
 }, {
   tabBarOptions: {
     // activeTintColor: colors.clearColor,
@@ -68,3 +70,34 @@ export const Tabs = TabNavigator({
     },
   },
 });
+
+export const NewUser = StackNavigator({
+  Register: {
+    screen: Register,
+    navigationOptions: {
+      title: 'Register',
+      // headerStyle
+    }
+  },
+  // SignIn: {
+  //   screen: SignIn,
+  //   navigationOptions: {
+  //     title: "Sign In",
+  //     headerStyle
+  //   }
+  // }
+});
+
+export const createRootNavigator = (signedIn = false) => SwitchNavigator(
+    {
+      NewUser: {
+        screen: NewUser
+      },
+      App: {
+        screen: App
+      }
+    },
+    {
+      initialRouteName: signedIn ? 'App' : 'NewUser'
+    }
+  );
