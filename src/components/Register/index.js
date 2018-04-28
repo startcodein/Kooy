@@ -3,8 +3,11 @@ import {
   View,
   Text,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import DatePicker from 'react-native-datepicker';
+import moment from 'moment';
+import 'moment/locale/ml';
 import { Button } from 'react-native-elements';
 import { onSignIn } from './../../auth';
 
@@ -12,7 +15,7 @@ export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date()
+      dueDate: new Date()
     };
   }
 
@@ -35,20 +38,22 @@ export default class Register extends Component {
     />
 
     <Text>I'm Register</Text>
-    <Text>I'm Register</Text>
-    <Text>I'm Register</Text>
+    <Text>{moment(this.state.dueDate).format('DD-MMMM-YYYY')}</Text>
+    <Text>{moment(new Date()).subtract(42, 'w').format('DD-MMMM-YYYY')}</Text>
+    <Text>{moment(new Date()).add(40, 'w').format('DD-MMMM-YYYY')}</Text>
 
+    <Text>പ്രവസവം പ്രതീക്ഷിക്കുന്ന തിയ്യതി</Text>
     <DatePicker
       style={styles.datepicker}
-      date={this.state.date}
+      date={this.state.dueDate}
       mode='date'
-      placeholder="തിയ്യതി"
       format="DD-MMMM-YYYY"
-      minDate="10-04-2018"
-      maxDate="30-04-2018"
+      minDate={moment(this.state.dueDate).add(2, 'w')}
+      maxDate={moment(this.state.dueDate).add(40, 'w')}
       confirmBtnText="Confirm"
       cancelBtnText="Cancel"
-      onDateChange={(date) => { this.setState({ date: date }); }}
+      showIcon={false}
+      onDateChange={(date) => { this.setState({ dueDate: date }); }}
     />
   </View>
     );
