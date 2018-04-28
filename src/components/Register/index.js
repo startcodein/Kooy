@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
   StyleSheet,
 } from 'react-native';
+import DatePicker from 'react-native-datepicker';
 import { Button } from 'react-native-elements';
 import { onSignIn } from './../../auth';
 
-const Register = ({ navigation }) => (
+export default class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date()
+    };
+  }
+
+  render() {
+    const { navigation } = this.props;
+    return (
   <View style={styles.container}>
     <Button
       title="Login"
@@ -26,13 +37,29 @@ const Register = ({ navigation }) => (
     <Text>I'm Register</Text>
     <Text>I'm Register</Text>
     <Text>I'm Register</Text>
-  </View>
-);
 
-export default Register;
+    <DatePicker
+      style={styles.datepicker}
+      date={this.state.date}
+      mode='date'
+      placeholder="തിയ്യതി"
+      format="DD-MMMM-YYYY"
+      minDate="10-04-2018"
+      maxDate="30-04-2018"
+      confirmBtnText="Confirm"
+      cancelBtnText="Cancel"
+      onDateChange={(date) => { this.setState({ date: date }); }}
+    />
+  </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  datepicker: {
+    width: 350
+  }
 });
