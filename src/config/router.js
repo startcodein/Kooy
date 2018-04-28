@@ -2,7 +2,10 @@ import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import Home from './../components/home';
+import Home from './../components/Home';
+import Calendar from './../components/Calendar';
+import Favourite from './../components/Favourite';
+import Settings from './../components/Settings';
 
 export const Tabs = TabNavigator({
   Home: {
@@ -14,8 +17,8 @@ export const Tabs = TabNavigator({
       />
     },
   },
-  English: {
-    screen: Home,
+  Calendar: {
+    screen: Calendar,
     navigationOptions: {
       tabBarLabel: 'കലണ്ടർ',
       tabBarIcon: ({ tintColor }) => <Icon
@@ -23,8 +26,8 @@ export const Tabs = TabNavigator({
       />
     },
   },
-  Saved: {
-    screen: Home,
+  Favourite: {
+    screen: Favourite,
     navigationOptions: {
       tabBarLabel: 'പ്രിയപ്പെട്ടവ',
       tabBarIcon: ({ tintColor }) => <Icon
@@ -33,7 +36,7 @@ export const Tabs = TabNavigator({
     },
   },
   Settings: {
-    screen: Home,
+    screen: Settings,
     navigationOptions: {
       tabBarLabel: 'Settings',
       tabBarIcon: ({ tintColor }) => <Icon
