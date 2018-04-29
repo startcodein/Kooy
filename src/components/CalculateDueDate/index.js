@@ -14,12 +14,18 @@ import {
 } from 'react-native-elements';
 import { onSignIn } from './../../auth';
 
-export default class DueDate extends Component {
+export default class CalculateDueDate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dueDate: new Date(),
+      periodDate: new Date()
     };
+
+    this.getDueDate = this.getDueDate.bind(this);
+  }
+
+  getDueDate(date) {
+    this.setState({ periodDate: moment(date) });
   }
 
   render() {
@@ -27,36 +33,26 @@ export default class DueDate extends Component {
     return (
       <View style={styles.container}>
         <Card>
-          <Text>I'm Register</Text>
-          <Text>Due: {JSON.stringify(this.state.dueDate)}</Text>
-          <FormLabel>പ്രവസവം പ്രതീക്ഷിക്കുന്ന തിയ്യതി</FormLabel>
+          <FormLabel>അവസാനത്തെ ആർത്തവം</FormLabel>
           <DatePicker
             style={styles.datepicker}
             customStyles={{
               dateInput: styles.dateInput
             }}
-            date={this.state.dueDate}
+            date={this.state.periodDate}
             mode='date'
             format="DD-MMMM-YYYY"
-            minDate={moment(new Date()).subtract(2, 'w')}
-            maxDate={moment(new Date()).add(40, 'w')}
+            minDate={moment(new Date()).subtract(42, 'w')}
+            maxDate={moment(new Date())}
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             showIcon={false}
-            onDateChange={(date) => { this.setState({ dueDate: moment(date) }); }}
+            onDateChange={this.getDueDate}
           />
 
-          <Button
-            buttonStyle={{ marginTop: 20 }}
-            backgroundColor="#03A9F4"
-            title="തിയ്യതി അറിയില്ല"
-            onPress={() => navigation.navigate('CalculateDueDate')}
-            buttonStyle={{
-              width: 150,
-              alignSelf: 'center',
-              backgroundColor: 'tomato'
-            }}
-          />
+          <Text style={{ fontSize: 30, textAlign: 'center' }}>
+            {moment(this.state.periodDate).add(40, 'w').format('DD-MMMM-YYYY')}
+          </Text>
           <Button
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="#03A9F4"

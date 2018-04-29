@@ -13,7 +13,6 @@ import {
 import { onSignIn } from './../../auth';
 
 export default class Register extends Component {
-
   render() {
     const { navigation } = this.props;
     return (
@@ -39,24 +38,13 @@ export default class Register extends Component {
       <FormInput secureTextEntry placeholder="Password..." />
       <FormLabel>Confirm Password</FormLabel>
       <FormInput secureTextEntry placeholder="Confirm Password..." />
-
       <Button
         buttonStyle={{ marginTop: 20 }}
         backgroundColor="#03A9F4"
         title="Continue"
         onPress={() => navigation.navigate('DueDate')}
       />
-      <Button
-        buttonStyle={{ marginTop: 20 }}
-        backgroundColor="transparent"
-        textStyle={{ color: '#bcbec1' }}
-        title='Sign In'
-        onPress={() => {
-          onSignIn().then(() => navigation.navigate('DueDate'));
-        }}
-      />
     </Card>
-
   </View>
     );
   }

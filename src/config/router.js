@@ -5,6 +5,7 @@ import { Icon } from 'react-native-elements';
 
 import Register from './../components/Register';
 import DueDate from './../components/DueDate';
+import CalculateDueDate from './../components/CalculateDueDate';
 import Home from './../components/Home';
 import Calendar from './../components/Calendar';
 import Favourite from './../components/Favourite';
@@ -82,6 +83,13 @@ export const NewUser = StackNavigator({
   },
   DueDate: {
     screen: DueDate,
+    navigationOptions: {
+      title: 'തിയ്യതി',
+      // headerStyle
+    }
+  },
+  CalculateDueDate: {
+    screen: CalculateDueDate,
     navigationOptions: {
       title: 'തിയ്യതി',
       // headerStyle
