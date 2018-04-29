@@ -4,6 +4,7 @@ import { TabNavigator, StackNavigator, SwitchNavigator } from 'react-navigation'
 import { Icon } from 'react-native-elements';
 
 import Register from './../components/Register';
+import DueDate from './../components/DueDate';
 import Home from './../components/Home';
 import Calendar from './../components/Calendar';
 import Favourite from './../components/Favourite';
@@ -75,17 +76,17 @@ export const NewUser = StackNavigator({
   Register: {
     screen: Register,
     navigationOptions: {
-      title: 'Register',
+      title: 'രജിസ്റ്റർ',
       // headerStyle
     }
   },
-  // SignIn: {
-  //   screen: SignIn,
-  //   navigationOptions: {
-  //     title: "Sign In",
-  //     headerStyle
-  //   }
-  // }
+  DueDate: {
+    screen: DueDate,
+    navigationOptions: {
+      title: 'തിയ്യതി',
+      // headerStyle
+    }
+  }
 });
 
 export const createRootNavigator = (signedIn = false) => SwitchNavigator(
