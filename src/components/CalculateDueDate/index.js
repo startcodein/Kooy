@@ -32,7 +32,7 @@ export default class CalculateDueDate extends Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Card>
+        <Card style={{ flex: 1 }}>
           <FormLabel>അവസാനത്തെ ആർത്തവം</FormLabel>
           <DatePicker
             style={styles.datepicker}
@@ -57,9 +57,7 @@ export default class CalculateDueDate extends Component {
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="#03A9F4"
             title="Submit"
-            onPress={() => {
-              onSignIn().then(() => navigation.navigate('App'));
-            }}
+            onPress={() => navigation.goBack()}
           />
         </Card>
       </View>
@@ -69,6 +67,7 @@ export default class CalculateDueDate extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 20,
     flex: 1,
   },
   datepicker: {

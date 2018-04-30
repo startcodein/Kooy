@@ -1,10 +1,8 @@
 import React from 'react';
-import { Button } from 'react-native';
 import { TabNavigator, StackNavigator, SwitchNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 import Register from './../components/Register';
-import DueDate from './../components/DueDate';
 import CalculateDueDate from './../components/CalculateDueDate';
 import Home from './../components/Home';
 import Calendar from './../components/Calendar';
@@ -81,13 +79,6 @@ export const NewUser = StackNavigator({
       // headerStyle
     }
   },
-  DueDate: {
-    screen: DueDate,
-    navigationOptions: {
-      title: 'തിയ്യതി',
-      // headerStyle
-    }
-  },
   CalculateDueDate: {
     screen: CalculateDueDate,
     navigationOptions: {
@@ -95,7 +86,12 @@ export const NewUser = StackNavigator({
       // headerStyle
     }
   }
-});
+},
+{
+  mode: 'modal',
+  headerMode: 'none',
+}
+);
 
 export const createRootNavigator = (signedIn = false) => SwitchNavigator(
     {
