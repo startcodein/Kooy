@@ -3,10 +3,11 @@ import {
   View,
   Text,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
 import { onSignOut } from './../../auth';
 
-class Settings extends Component {
+class Home extends Component {
   render() {
     const { navigation } = this.props;
     return (
@@ -22,6 +23,9 @@ class Settings extends Component {
         <Text>I'm the Kooy component</Text>
         <Text>I'm the Kooy component</Text>
         <Text>I'm the Kooy component</Text>
+
+        <Text>Due: {JSON.stringify(this.props.babyDue)}</Text>
+
         <Text>I'm the Kooy component</Text>
         <Text>I'm the Kooy component</Text>
         <Text>I'm the Kooy component</Text>
@@ -30,4 +34,12 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+const mapStateToProps = ({ appReducer, appContentReducer }) => ({
+// const mapStateToProps = (state) => ({
+  initialProps: appReducer,
+  babyDue: appContentReducer.dueDate
+  // notificationDate: appReducer.notificationDate,
+  // toggleAlarm: appReducer.toggleAlarm
+});
+
+export default connect(mapStateToProps, null)(Home);

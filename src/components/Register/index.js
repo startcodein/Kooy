@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {
   View,
   Text,
   StyleSheet,
-  Alert
 } from 'react-native';
+import { connect } from 'react-redux';
 import DatePicker from 'react-native-datepicker';
 import moment from 'moment';
 // import 'moment/locale/ml';
