@@ -4,7 +4,7 @@ import { Icon } from 'react-native-elements';
 
 import Register from './../components/Register';
 import CalculateDueDate from './../components/CalculateDueDate';
-import Home from './../components/Home';
+import Home from './../views/Home';
 import Calendar from './../components/Calendar';
 import Week from './../components/Week';
 import Favourite from './../components/Favourite';
