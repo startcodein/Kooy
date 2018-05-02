@@ -6,6 +6,7 @@ import Register from './../components/Register';
 import CalculateDueDate from './../components/CalculateDueDate';
 import Home from './../components/Home';
 import Calendar from './../components/Calendar';
+import Week from './../components/Week';
 import Favourite from './../components/Favourite';
 import Settings from './../components/Settings';
 
@@ -16,6 +17,15 @@ export const App = TabNavigator({
       tabBarLabel: 'ഇന്ന്',
       tabBarIcon: ({ tintColor }) => <Icon
         name="foot" type="foundation" size={35} color={tintColor}
+      />
+    },
+  },
+  Week: {
+    screen: Week,
+    navigationOptions: {
+      tabBarLabel: 'ഈ ആഴ്ച',
+      tabBarIcon: ({ tintColor }) => <Icon
+        name="child-care" type='materialIcons' size={35} color={tintColor}
       />
     },
   },
