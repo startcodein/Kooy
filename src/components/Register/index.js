@@ -68,7 +68,8 @@ class Register extends Component {
             maxDate={moment(new Date()).add(initialProps.maxDueWeeks, 'w')}
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
-            showIcon={false}
+            showIcon
+            placeholder=" "
             onDateChange={this.onChange}
           />
 
@@ -114,11 +115,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ appReducer, appContentReducer }) => ({
-// const mapStateToProps = (state) => ({
   initialProps: appReducer,
   babyDetails: appContentReducer
-  // notificationDate: appReducer.notificationDate,
-  // toggleAlarm: appReducer.toggleAlarm
 });
 
 const mapDispatchToProps = (dispatch) => ({

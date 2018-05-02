@@ -9,6 +9,7 @@ const initialState = {
 
   minDueWeeks: 2,
   maxDueWeeks: 40,
+  minPeriodWeeks: 42,
 };
 
 const appReducer = (state = initialState, action) => {

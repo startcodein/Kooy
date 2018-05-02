@@ -1,5 +1,5 @@
 const initialState = {
-  dueDate: new Date(),
+  // dueDate: new Date(),
 };
 
 const appContentReducer = (state = initialState, action) => {
