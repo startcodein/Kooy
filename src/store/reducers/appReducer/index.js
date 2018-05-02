@@ -5,10 +5,14 @@ const initialState = {
   visible: true,
   fontSize: CONSTANTS.FONT_SIZE_VALUE,
   notificationDate: new Date(),
-  setDueDetails: false
+  setDueDetails: false,
+
+  minDueWeeks: 2,
+  maxDueWeeks: 40,
+  minPeriodWeeks: 42,
 };
 
-const appContentReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
   switch (action.type) {
 
   case 'SET_IN_CACHE':
@@ -22,4 +26,4 @@ const appContentReducer = (state = initialState, action) => {
   }
 };
 
-export default appContentReducer;
+export default appReducer;

@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button } from 'react-native';
 import { TabNavigator, StackNavigator, SwitchNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 import Register from './../components/Register';
-import DueDate from './../components/DueDate';
 import CalculateDueDate from './../components/CalculateDueDate';
 import Home from './../components/Home';
 import Calendar from './../components/Calendar';
+import Week from './../components/Week';
 import Favourite from './../components/Favourite';
 import Settings from './../components/Settings';
 
@@ -18,6 +17,15 @@ export const App = TabNavigator({
       tabBarLabel: 'ഇന്ന്',
       tabBarIcon: ({ tintColor }) => <Icon
         name="foot" type="foundation" size={35} color={tintColor}
+      />
+    },
+  },
+  Week: {
+    screen: Week,
+    navigationOptions: {
+      tabBarLabel: 'ഈ ആഴ്ച',
+      tabBarIcon: ({ tintColor }) => <Icon
+        name="child-care" type='materialIcons' size={35} color={tintColor}
       />
     },
   },
@@ -81,13 +89,6 @@ export const NewUser = StackNavigator({
       // headerStyle
     }
   },
-  DueDate: {
-    screen: DueDate,
-    navigationOptions: {
-      title: 'തിയ്യതി',
-      // headerStyle
-    }
-  },
   CalculateDueDate: {
     screen: CalculateDueDate,
     navigationOptions: {
@@ -95,7 +96,12 @@ export const NewUser = StackNavigator({
       // headerStyle
     }
   }
-});
+},
+{
+  mode: 'modal',
+  headerMode: 'none',
+}
+);
 
 export const createRootNavigator = (signedIn = false) => SwitchNavigator(
     {
