@@ -25,7 +25,7 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    this.props.navigation.navigate('Home');
+    // this.props.navigation.navigate('Home');
   }
 
   onChange(date) {

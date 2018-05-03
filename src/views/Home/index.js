@@ -51,11 +51,11 @@ class Home extends Component {
         <Text>I'm the Kooy component</Text>
 
         <Text>Due: {JSON.stringify(this.props.babyDue, 'DD-MMMM-YYYY')}</Text>
-        <Text>Validation: {moment(this.props.babyDue, 'DD-MMMM-YYYY').isValid()}</Text>
-
+        <Text>{moment(this.props.babyDue).subtract(40, 'w').format('DD-MMMM-YYYY')}</Text>
+        <Text>{moment(this.props.babyDue).add(2, 'w').format('DD-MMMM-YYYY')}</Text>
         <Text>I'm the Kooy component</Text>
         <Text>I'm the Kooy component</Text>
-        <Text>I'm the Kooy component</Text>
+        <Text>{JSON.stringify(this.props.babyDetails)}</Text>
       </View>
     );
   }
@@ -71,7 +71,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = ({ appReducer, appContentReducer }) => ({
 // const mapStateToProps = (state) => ({
   initialProps: appReducer,
-  babyDue: appContentReducer.dueDate
+  babyDue: appContentReducer.dueDate,
+  babyDetails: appContentReducer
   // notificationDate: appReducer.notificationDate,
   // toggleAlarm: appReducer.toggleAlarm
 });
