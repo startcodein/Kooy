@@ -14,12 +14,26 @@ import { setDueDate } from './../../store/actions/appContentAction';
 import Status from './../../components/Status';
 
 class Home extends Component {
+
   componentDidMount() {
     this.checkDueDate();
   }
 
   componentDidUpdate() {
     this.checkDueDate();
+  }
+
+  getWeeks = () => moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w');
+
+  getDays = () => moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'd') - (moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w') * 7);
+
+  getTrimester = (weeks) => {
+    if (weeks <= 13) {
+      return 1;
+    } else if (weeks <= 27) {
+      return 2;
+    }
+    return 3;
   }
 
   checkDueDate = () => {
@@ -50,11 +64,15 @@ class Home extends Component {
           onPress={() => this.props.setDueDate('')}
         />
 
-      <Status startDate={this.props.babyStart} dueDate={this.props.babyDue} />
-        <Text>I'm the Kooy component</Text>
-        <Text>I'm the Kooy component</Text>
-        <Text>I'm the Kooy component</Text>
+        <Status
+          days={this.getDays()}
+          weeks={this.getWeeks()}
+          trimester={this.getTrimester()}
+        />
 
+        <Text>I'm the Kooy component</Text>
+        <Text>I'm the Kooy component</Text>
+        <Text>I'm the Kooy component</Text>
         <Text>Due: {JSON.stringify(this.props.babyDue, 'DD-MMMM-YYYY')}</Text>
         <Text>{moment(this.props.babyDue).subtract(40, 'w').format('DD-MMMM-YYYY')}</Text>
         <Text>{moment(this.props.babyDue).add(2, 'w').format('DD-MMMM-YYYY')}</Text>
@@ -68,37 +86,6 @@ class Home extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  currentStatus: {
-    flex: 1,
-    flexDirection: 'row'
-  },
-  statusBox: {
-    flex: 1,
-    padding: 10,
-    // height: 100
-  },
-  statusBoxResult: {
-    textAlign: 'center',
-    fontSize: 22,
-    marginTop: 4,
-  },
-  statusBoxTitle: {
-    textAlign: 'center',
-    // fontWeight: '600',
-    marginBottom: 4
-  },
-  statusBoxWeek: {
-    backgroundColor: '#2196F3',
-  },
-  statusBoxWeekDay: {
-    backgroundColor: '#8BC34A',
-  },
-  statusBoxTrimester: {
-    backgroundColor: '#e3aa1a',
-  }
-});
 
 const mapDispatchToProps = (dispatch) => ({
     setDueDate: (date) => {

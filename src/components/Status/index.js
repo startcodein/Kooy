@@ -6,25 +6,18 @@ import {
 } from 'react-native';
 import moment from 'moment';
 
-const Status = ({ startDate }) => (
+const Status = ({ weeks, days, trimester }) => (
   <View style={styles.currentStatus}>
     <View style={[styles.statusBox, styles.statusBoxWeek]}>
-      <Text style={styles.statusBoxResult}>
-        {moment(moment()).diff(moment(startDate, 'DD-MMMM-YYYY'), 'w')}
-      </Text>
+      <Text style={styles.statusBoxResult}>{weeks}</Text>
       <Text style={styles.statusBoxTitle}>Weeks</Text>
     </View>
     <View style={[styles.statusBox, styles.statusBoxWeekDay]}>
-      <Text style={styles.statusBoxResult}>
-        {
-          moment(moment()).diff(moment(startDate, 'DD-MMMM-YYYY'), 'd') -
-          (moment(moment()).diff(moment(startDate, 'DD-MMMM-YYYY'), 'w') * 7)
-        }
-      </Text>
+      <Text style={styles.statusBoxResult}>{days}</Text>
       <Text style={styles.statusBoxTitle}>Days</Text>
     </View>
     <View style={[styles.statusBox, styles.statusBoxTrimester]}>
-      <Text style={styles.statusBoxResult}>0</Text>
+      <Text style={styles.statusBoxResult}>{trimester}</Text>
       <Text style={styles.statusBoxTitle}>Tremestr</Text>
     </View>
   </View>
