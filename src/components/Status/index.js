@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import moment from 'moment';
 
 const Status = ({ weeks, days, trimester }) => (
   <View style={styles.currentStatus}>
@@ -33,7 +32,6 @@ const styles = StyleSheet.create({
   statusBox: {
     flex: 1,
     padding: 10,
-    // height: 100
   },
   statusBoxResult: {
     textAlign: 'center',
@@ -42,7 +40,6 @@ const styles = StyleSheet.create({
   },
   statusBoxTitle: {
     textAlign: 'center',
-    // fontWeight: '600',
     marginBottom: 4
   },
   statusBoxWeek: {

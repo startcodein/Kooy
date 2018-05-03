@@ -25,7 +25,7 @@ class Home extends Component {
 
   getWeeks = () => moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w');
 
-  getDays = () => moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'd') - (moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w') * 7);
+  getDaysWeekAfter = () => moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'd') - (moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w') * 7);
 
   getTrimester = (weeks) => {
     if (weeks <= 13) {
@@ -65,7 +65,7 @@ class Home extends Component {
         />
 
         <Status
-          days={this.getDays()}
+          days={this.getDaysWeekAfter()}
           weeks={this.getWeeks()}
           trimester={this.getTrimester()}
         />
@@ -95,13 +95,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 const mapStateToProps = ({ appReducer, appContentReducer }) => ({
-// const mapStateToProps = (state) => ({
   initialProps: appReducer,
   babyDue: appContentReducer.dueDate,
   babyStart: appContentReducer.startDate,
   babyDetails: appContentReducer
-  // notificationDate: appReducer.notificationDate,
-  // toggleAlarm: appReducer.toggleAlarm
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
