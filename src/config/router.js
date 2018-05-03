@@ -6,7 +6,7 @@ import Register from './../components/Register';
 import CalculateDueDate from './../components/CalculateDueDate';
 import Home from './../views/Home';
 import Calendar from './../components/Calendar';
-import Week from './../components/Week';
+import Week from './../views/Week';
 import Favourite from './../components/Favourite';
 import Settings from './../components/Settings';
 

@@ -24,6 +24,10 @@ class Register extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentDidMount() {
+    this.props.navigation.navigate('Home');
+  }
+
   onChange(date) {
     this.props.setDueDate(date);
   }
