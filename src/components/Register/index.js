@@ -53,11 +53,6 @@ class Register extends Component {
         <Card>
           <FormLabel>പേര്</FormLabel>
           <FormInput placeholder="നിങ്ങളുടെ പേര്" />
-          <FormLabel>Password</FormLabel>
-          <FormInput secureTextEntry placeholder="Password..." />
-          <FormLabel>Confirm Password</FormLabel>
-          <FormInput secureTextEntry placeholder="Confirm Password..." />
-          <Text>Due: {JSON.stringify(initialProps)}</Text>
           <Text>babyDetails: {JSON.stringify(babyDetails)}</Text>
           <FormLabel>പ്രവസവം പ്രതീക്ഷിക്കുന്ന തിയ്യതി</FormLabel>
           <DatePicker

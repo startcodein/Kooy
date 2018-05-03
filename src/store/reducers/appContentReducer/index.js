@@ -2,7 +2,7 @@ import moment from 'moment';
 
 const initialState = {
   // dueDate: new Date(),
-  dueDate: moment('25-May-2018', 'DD-MMMM-YYYY'),
+  dueDate: moment('25-May-2018', 'DD-MMMM-YYYY').format('DD-MMMM-YYYY'),
   startDate: moment('25-May-2018').subtract(40, 'w').format('DD-MMMM-YYYY')
 };
 
