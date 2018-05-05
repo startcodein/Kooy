@@ -4,16 +4,17 @@ import { Icon } from 'react-native-elements';
 
 import Register from './../components/Register';
 import CalculateDueDate from './../components/CalculateDueDate';
-import Home from './../views/Home';
+import Dashboard from './../views/Dashboard';
 import Calendar from './../components/Calendar';
 import Week from './../views/Week';
 import Favourite from './../components/Favourite';
 import Settings from './../components/Settings';
 
 export const App = TabNavigator({
-  Home: {
-    screen: Home,
+  Dashboard: {
+    screen: Dashboard,
     navigationOptions: {
+      title: 'Today',
       tabBarLabel: 'ഇന്ന്',
       tabBarIcon: ({ tintColor }) => <Icon
         name="foot" type="foundation" size={35} color={tintColor}
@@ -23,6 +24,7 @@ export const App = TabNavigator({
   Week: {
     screen: Week,
     navigationOptions: {
+      title: 'Week',
       tabBarLabel: 'ഈ ആഴ്ച',
       tabBarIcon: ({ tintColor }) => <Icon
         name="child-care" type='materialIcons' size={35} color={tintColor}
@@ -32,6 +34,7 @@ export const App = TabNavigator({
   Calendar: {
     screen: Calendar,
     navigationOptions: {
+      title: 'Calender',
       tabBarLabel: 'കലണ്ടർ',
       tabBarIcon: ({ tintColor }) => <Icon
         name="calendar" type='evilicon' size={35} color={tintColor}
@@ -41,6 +44,7 @@ export const App = TabNavigator({
   Favourite: {
     screen: Favourite,
     navigationOptions: {
+      title: 'Favourite',
       tabBarLabel: 'പ്രിയപ്പെട്ടവ',
       tabBarIcon: ({ tintColor }) => <Icon
         name='heart' type='evilicon' size={39} color={tintColor}
@@ -50,6 +54,7 @@ export const App = TabNavigator({
   Settings: {
     screen: Settings,
     navigationOptions: {
+      title: 'Settings',
       tabBarLabel: 'Settings',
       tabBarIcon: ({ tintColor }) => <Icon
         name="gear" type="evilicon" size={33} color={tintColor}
@@ -58,10 +63,8 @@ export const App = TabNavigator({
   }
 }, {
   tabBarOptions: {
-    // activeTintColor: colors.clearColor,
     activeTintColor: 'white',
     activeBackgroundColor: 'tomato',
-    showLabel: true,
     style: {
       backgroundColor: '#fff',
       height: 60,
@@ -79,6 +82,12 @@ export const App = TabNavigator({
       fontSize: 12,
     },
   },
+});
+
+const Home = StackNavigator({
+    App: {
+        screen: App
+    }
 });
 
 export const NewUser = StackNavigator({
@@ -109,7 +118,7 @@ export const createRootNavigator = (signedIn = false) => SwitchNavigator(
         screen: NewUser
       },
       App: {
-        screen: App
+        screen: Home
       }
     },
     {

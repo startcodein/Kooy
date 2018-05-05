@@ -13,7 +13,7 @@ import { onSignOut } from './../../auth';
 import { setDueDate } from './../../store/actions/appContentAction';
 import Status from './../../components/Status';
 
-class Home extends Component {
+class Dashboard extends Component {
 
   componentDidMount() {
     this.checkDueDate();
@@ -101,4 +101,4 @@ const mapStateToProps = ({ appReducer, appContentReducer }) => ({
   babyDetails: appContentReducer
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
