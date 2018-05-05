@@ -4,18 +4,46 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { Button, Icon, Divider } from 'react-native-elements';
+import moment from 'moment';
+import WeekHeader from './../../components/WeekHeader';
 
-export default class Week extends Component {
+class Week extends Component {
+  constructor(props){
+    super();
+    this.state = {
+        age: 'Kooy',
+    };
+  }
+
   static navigationOptions = ({ navigation }) => {
-    const params = navigation.state.params || {};
     return {
-      // headerTitle: '<LogoTitle />',
+      headerLeft: (
+        <Icon
+          iconStyle={{
+            fontSize: 40
+          }}
+          name='arrow-left'
+          type='evilicon'
+          onPress={() => console.log('hello')}
+        />
+      ),
+      headerTitle: <WeekHeader />,
       headerRight: (
-        <Button onPress={params.increaseCount} title="+1" color="#fff" />
+        <Icon
+          iconStyle={{
+            fontSize: 40
+          }}
+          name='arrow-right'
+          type='evilicon'
+          onPress={() => console.log('hello')}
+        />
       ),
     };
   };
+
+  getWeeks = () => moment().diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w');
 
   render() {
     return (
@@ -29,9 +57,13 @@ export default class Week extends Component {
           onPress={() => this.props.navigation.navigate('NewUser')}
         />
         <Text>I'm the Week component</Text>
+        <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
-        <Text>{JSON.stringify(this.props)}</Text>
-        <Text>I'm the Week component</Text>
+        <Divider style={{ backgroundColor: '#333' }} />
+        <Text>{JSON.stringify(this.props.babyDetails)}</Text>
+        <Divider style={{ backgroundColor: '#333' }} />
+        <Text>{JSON.stringify(this.props.navigation)}</Text>
+        <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
       </View>
     );
@@ -43,3 +75,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+const mapStateToProps = ({ appReducer, appContentReducer }) => ({
+  initialProps: appReducer,
+  babyDue: appContentReducer.dueDate,
+  babyStart: appContentReducer.startDate,
+  babyDetails: appContentReducer
+});
+
+export default connect(mapStateToProps, null)(Week);

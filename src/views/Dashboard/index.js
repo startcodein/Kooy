@@ -23,9 +23,9 @@ class Dashboard extends Component {
     this.checkDueDate();
   }
 
-  getWeeks = () => moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w');
+  getWeeks = () => moment().diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w');
 
-  getDaysWeekAfter = () => moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'd') - (moment(moment()).diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w') * 7);
+  getDaysWeekAfter = () => moment().diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'd') - (moment().diff(moment(this.props.babyStart, 'DD-MMMM-YYYY'), 'w') * 7);
 
   getTrimester = (weeks) => {
     if (weeks <= 13) {
