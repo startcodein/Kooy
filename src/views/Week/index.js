@@ -10,6 +10,7 @@ import moment from 'moment';
 import { setHeaderWeek } from './../../store/actions/appContentAction';
 
 import WeekHeader from './../../components/WeekHeader';
+import WeekHeaderButton from './../../components/WeekHeaderButton';
 
 class Week extends Component {
   constructor(props) {
@@ -24,24 +25,16 @@ class Week extends Component {
 
     return {
       headerLeft: (
-        <Icon
-          iconStyle={{
-            fontSize: 40
-          }}
-          name='arrow-left'
-          type='evilicon'
-          onPress={params.prevDay}
+        <WeekHeaderButton
+          position='left'
+          prevDay={params.prevDay}
         />
       ),
       headerTitle: <WeekHeader />,
       headerRight: (
-        <Icon
-          iconStyle={{
-            fontSize: 40
-          }}
-          name='arrow-right'
-          type='evilicon'
-          onPress={params.nextDay}
+        <WeekHeaderButton
+          position='right'
+          nextDay={params.nextDay}
         />
       ),
     };
