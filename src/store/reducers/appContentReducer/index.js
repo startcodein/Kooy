@@ -18,6 +18,12 @@ const appContentReducer = (state = initialState, action) => {
       : ''
     };
 
+  case 'SET_HEADER_WEEK':
+    return {
+      ...state,
+      headerWeek: action.payload
+    };
+
   default:
     return state;
   }

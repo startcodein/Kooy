@@ -4,3 +4,10 @@ export function setDueDate(date) {
     payload: date
   };
 }
+
+export function setHeaderWeek(date) {
+  return {
+    type: 'SET_HEADER_WEEK',
+    payload: date
+  };
+}
