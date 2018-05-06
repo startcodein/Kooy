@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Text,
-  StyleSheet,
-  TouchableOpacity
-} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 
@@ -39,12 +35,6 @@ class WeekHeaderButton extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 const mapStateToProps = ({ appContentReducer }) => ({
   week: appContentReducer.headerWeek
