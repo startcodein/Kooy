@@ -21,6 +21,12 @@ const appReducer = (state = initialState, action) => {
       fontSize: action.value
     };
 
+  case 'GET_WEEK_DETAILS':
+    return {
+      ...state,
+      weekDetails: action.payload
+    };
+
   default:
     return state;
   }

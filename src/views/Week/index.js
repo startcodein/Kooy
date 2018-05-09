@@ -5,23 +5,15 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Icon, Divider } from 'react-native-elements';
+import { Button, Divider } from 'react-native-elements';
 import moment from 'moment';
 import { setHeaderWeek } from './../../store/actions/appContentAction';
+import { getWeekDetails } from './../../store/actions/appAction';
 
 import WeekHeader from './../../components/WeekHeader';
 import WeekHeaderButton from './../../components/WeekHeaderButton';
 
-import data from './../../data/weekDetails.json';
-
 class Week extends Component {
-  constructor(props) {
-    super();
-    this.state = {
-        age: 'Kooy',
-    };
-  }
-
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
@@ -42,11 +34,19 @@ class Week extends Component {
     };
   };
 
+  constructor() {
+    super();
+    this.state = {
+        age: 'Kooy',
+    };
+  }
+
   componentWillMount() {
     this.props.setHeaderWeek(this.getWeeks());
     this.setState({
       // currentWeek: this.getWeeks()
     });
+    this.props.getWeekDetails();
 
     this.props.navigation.setParams({ prevDay: this.prevDay });
     this.props.navigation.setParams({ nextDay: this.nextDay });
@@ -77,8 +77,8 @@ class Week extends Component {
         <Text>I'm the Week component</Text>
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
-        <Divider style={{ backgroundColor: '#333' }} />
-        <Text>{JSON.stringify(data)}</Text>
+        <Divider style={{ backgroundColor: 'tomato' }} />
+        <Text>{JSON.stringify(this.props.initialProps)}</Text>
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>{JSON.stringify(this.props.babyDetails)}</Text>
         <Divider style={{ backgroundColor: '#333' }} />
@@ -96,11 +96,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => {
+  return {
     setHeaderWeek: (week) => {
       dispatch(setHeaderWeek(week));
+    },
+    getWeekDetails: () => {
+      dispatch(getWeekDetails());
     }
-  });
+  };
+};
 
 const mapStateToProps = ({ appReducer, appContentReducer }) => ({
   initialProps: appReducer,
