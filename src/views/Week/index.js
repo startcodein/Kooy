@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View,
+  ScrollView,
   Text,
   StyleSheet,
 } from 'react-native';
@@ -64,8 +64,14 @@ class Week extends Component {
 
 
   render() {
+    const { fullWeeks, week } = this.props;
+
+    let currentWeekData;
+    if (fullWeeks) {
+      currentWeekData = fullWeeks.find(thisWeek => thisWeek.id === week);
+    }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Button
           backgroundColor="#03A9F4"
           title="Reset"
@@ -78,14 +84,18 @@ class Week extends Component {
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
         <Divider style={{ backgroundColor: 'tomato' }} />
-        <Text>{JSON.stringify(this.props.initialProps)}</Text>
+        {
+          currentWeekData ?
+          <Text>{JSON.stringify(currentWeekData)}</Text> :
+          <Text>Loading...</Text>
+        }
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>{JSON.stringify(this.props.babyDetails)}</Text>
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>{JSON.stringify(this.props.navigation)}</Text>
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -96,19 +106,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = (dispatch) => ({
     setHeaderWeek: (week) => {
       dispatch(setHeaderWeek(week));
     },
     getWeekDetails: () => {
       dispatch(getWeekDetails());
     }
-  };
-};
+  });
 
 const mapStateToProps = ({ appReducer, appContentReducer }) => ({
   initialProps: appReducer,
+  fullWeeks: appReducer.weekDetails,
   babyDue: appContentReducer.dueDate,
   babyStart: appContentReducer.startDate,
   week: appContentReducer.headerWeek,
