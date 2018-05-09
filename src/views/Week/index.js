@@ -12,6 +12,8 @@ import { setHeaderWeek } from './../../store/actions/appContentAction';
 import WeekHeader from './../../components/WeekHeader';
 import WeekHeaderButton from './../../components/WeekHeaderButton';
 
+import data from './../../data/weekDetails.json';
+
 class Week extends Component {
   constructor(props) {
     super();
@@ -76,7 +78,7 @@ class Week extends Component {
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
         <Divider style={{ backgroundColor: '#333' }} />
-        <Text>{JSON.stringify(this.state.kooy)}</Text>
+        <Text>{JSON.stringify(data)}</Text>
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>{JSON.stringify(this.props.babyDetails)}</Text>
         <Divider style={{ backgroundColor: '#333' }} />
