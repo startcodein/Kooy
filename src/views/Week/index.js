@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {
+  View,
   ScrollView,
   Text,
+  Image,
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -86,7 +88,14 @@ class Week extends Component {
         <Divider style={{ backgroundColor: 'tomato' }} />
         {
           currentWeekData ?
-          <Text>{JSON.stringify(currentWeekData)}</Text> :
+          <View style={styles.infowrap}>
+
+
+            <Text style={styles.info}>Week: {currentWeekData.week}</Text>
+            <Text style={styles.info}>Weight: {currentWeekData.weight}</Text>
+            <Text style={styles.info}>Size: {currentWeekData.length}</Text>
+            <Text style={styles.info}>Shape: {currentWeekData.size}</Text>
+          </View> :
           <Text>Loading...</Text>
         }
         <Divider style={{ backgroundColor: '#333' }} />
@@ -104,6 +113,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  infowrap: {
+    backgroundColor: 'deepskyblue',
+    padding: 10,
+  },
+  info: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: '#fff',
+    paddingTop: 5,
+  }
 });
 
 const mapDispatchToProps = (dispatch) => ({
