@@ -6,7 +6,7 @@ import { Icon } from 'react-native-elements';
 class WeekHeaderButton extends Component {
   render() {
     const NavButton = () => {
-      if (this.props.position === 'left' && this.props.week > 0) {
+      if (this.props.position === 'left' && this.props.week > 1) {
         return (<Icon
           iconStyle={{
             fontSize: 40
