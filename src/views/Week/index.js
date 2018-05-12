@@ -7,13 +7,14 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Divider, Card } from 'react-native-elements';
+import { Button, Divider } from 'react-native-elements';
 import moment from 'moment';
 import { setHeaderWeek } from './../../store/actions/appContentAction';
 import { getWeekDetails } from './../../store/actions/appAction';
 
 import WeekHeader from './../../components/WeekHeader';
 import WeekHeaderButton from './../../components/WeekHeaderButton';
+import ShapeInfo from './../../components/ShapeInfo';
 
 class Week extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -165,19 +166,10 @@ class Week extends Component {
       <ScrollView style={styles.container}>
         {
           currentWeekData ?
-          <Card style={styles.infoCard}>
-            <View>
-              <Image
-                resizeMode="cover"
-                source={this.getImage(currentWeekData.week)}
-              />
-              <Text style={styles.info}>Week: {this.getImage(currentWeekData.week)}</Text>
-              <Text style={styles.info}>Image: {currentWeekData.image}</Text>
-              <Text style={styles.info}>Weight: {currentWeekData.weight}</Text>
-              <Text style={styles.info}>Size: {currentWeekData.length}</Text>
-              <Text style={styles.info}>Shape: {currentWeekData.size}</Text>
-            </View>
-          </Card> :
+          <ShapeInfo
+            week={currentWeekData}
+            getImage={this.getImage}
+          /> :
           <Text>Loading...</Text>
         }
         <Button
@@ -209,12 +201,6 @@ const styles = StyleSheet.create({
   },
   infoCard: {
   },
-  info: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#333',
-    paddingTop: 5,
-  }
 });
 
 const mapDispatchToProps = (dispatch) => ({
