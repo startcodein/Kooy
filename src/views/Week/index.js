@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Divider } from 'react-native-elements';
+import { Button, Divider, Card } from 'react-native-elements';
 import moment from 'moment';
 import { setHeaderWeek } from './../../store/actions/appContentAction';
 import { getWeekDetails } from './../../store/actions/appAction';
@@ -163,6 +163,23 @@ class Week extends Component {
     }
     return (
       <ScrollView style={styles.container}>
+        {
+          currentWeekData ?
+          <Card style={styles.infoCard}>
+            <View>
+              <Image
+                resizeMode="cover"
+                source={this.getImage(currentWeekData.week)}
+              />
+              <Text style={styles.info}>Week: {this.getImage(currentWeekData.week)}</Text>
+              <Text style={styles.info}>Image: {currentWeekData.image}</Text>
+              <Text style={styles.info}>Weight: {currentWeekData.weight}</Text>
+              <Text style={styles.info}>Size: {currentWeekData.length}</Text>
+              <Text style={styles.info}>Shape: {currentWeekData.size}</Text>
+            </View>
+          </Card> :
+          <Text>Loading...</Text>
+        }
         <Button
           backgroundColor="#03A9F4"
           title="Reset"
@@ -175,18 +192,6 @@ class Week extends Component {
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
         <Divider style={{ backgroundColor: 'tomato' }} />
-        {
-          currentWeekData ?
-          <View style={styles.infowrap}>
-            <Text style={styles.info}>Week: {this.getImage(currentWeekData.week)}</Text>
-            <Image source={this.getImage(currentWeekData.week)} />
-            <Text style={styles.info}>Image: {currentWeekData.image}</Text>
-            <Text style={styles.info}>Weight: {currentWeekData.weight}</Text>
-            <Text style={styles.info}>Size: {currentWeekData.length}</Text>
-            <Text style={styles.info}>Shape: {currentWeekData.size}</Text>
-          </View> :
-          <Text>Loading...</Text>
-        }
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>{JSON.stringify(this.props.babyDetails)}</Text>
         <Divider style={{ backgroundColor: '#333' }} />
@@ -202,14 +207,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  infowrap: {
-    backgroundColor: 'deepskyblue',
-    padding: 10,
+  infoCard: {
   },
   info: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#fff',
+    color: '#333',
     paddingTop: 5,
   }
 });

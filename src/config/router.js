@@ -24,7 +24,9 @@ export const App = TabNavigator({
   Week: {
     screen: Week,
     navigationOptions: {
-      title: 'Week',
+      headerStyle: {
+        backgroundColor: '#e16d65',
+      },
       tabBarLabel: 'ഈ ആഴ്ച',
       tabBarIcon: ({ tintColor }) => <Icon
         name="child-care" type='materialIcons' size={35} color={tintColor}
@@ -64,7 +66,7 @@ export const App = TabNavigator({
 }, {
   tabBarOptions: {
     activeTintColor: 'white',
-    activeBackgroundColor: 'tomato',
+    activeBackgroundColor: '#e16d65',
     style: {
       backgroundColor: '#fff',
       height: 60,

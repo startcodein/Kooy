@@ -14,7 +14,7 @@ class WeekHeader extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>ആഴ്ച {this.props.week}</Text>
+        <Text style={styles.headerTitle}>ആഴ്ച {this.props.week}</Text>
       </View>
     );
   }
@@ -23,8 +23,13 @@ class WeekHeader extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
   },
+  headerTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#fff',
+  }
 });
 
 

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import {
+  TouchableOpacity,
+  StyleSheet
+} from 'react-native';
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 
@@ -8,18 +11,14 @@ class WeekHeaderButton extends Component {
     const NavButton = () => {
       if (this.props.position === 'left' && this.props.week > 1) {
         return (<Icon
-          iconStyle={{
-            fontSize: 40
-          }}
+          iconStyle={styles.headerNav}
           name='arrow-left'
           type='evilicon'
           onPress={this.props.prevDay}
         />);
       } else if (this.props.position === 'right' && this.props.week < 42) {
         return (<Icon
-          iconStyle={{
-            fontSize: 40
-          }}
+          iconStyle={styles.headerNav}
           name='arrow-right'
           type='evilicon'
           onPress={this.props.nextDay}
@@ -35,6 +34,14 @@ class WeekHeaderButton extends Component {
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  headerNav: {
+    fontSize: 30,
+    color: '#fff',
+  },
+});
 
 const mapStateToProps = ({ appContentReducer }) => ({
   week: appContentReducer.headerWeek
