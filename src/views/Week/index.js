@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {
-  View,
   ScrollView,
   Text,
-  Image,
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Divider } from 'react-native-elements';
 import moment from 'moment';
 import { setHeaderWeek } from './../../store/actions/appContentAction';
 import { getWeekDetails } from './../../store/actions/appAction';
@@ -172,14 +169,8 @@ class Week extends Component {
           /> :
           <Text>Loading...</Text>
         }
-        <Button
-          backgroundColor="#03A9F4"
-          title="Reset"
-          buttonStyle={{
-            marginTop: 20
-          }}
-          onPress={() => this.props.navigation.navigate('NewUser')}
-        />
+      {
+        /*
         <Text>I'm the Week component</Text>
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
@@ -190,6 +181,8 @@ class Week extends Component {
         <Text>{JSON.stringify(this.props.navigation)}</Text>
         <Divider style={{ backgroundColor: '#333' }} />
         <Text>I'm the Week component</Text>
+        */
+      }
       </ScrollView>
     );
   }

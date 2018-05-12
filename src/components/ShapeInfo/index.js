@@ -18,36 +18,15 @@ const MyComponent = ({ week, getImage }) => (
       />
       <Text style={styles.shape}>{week.size}</Text>
       <View style={{ flexDirection: 'row' }}>
-        <View
-          style={
-            [
-              styles.info,
-              {
-                backgroundColor: 'skyblue',
-                borderRightWidth: 1,
-                borderColor: 'tomato'
-              }
-            ]
-          }
-        >
-          <Text style={styles.infoTitle}>Size: {week.length}</Text>
-          <Text style={styles.infoValue}>Size: {week.length}</Text>
-          <Text style={styles.infoMesure}>Size: {week.length}</Text>
+        <View style={styles.info}>
+          <Text syle={styles.infoTitle}>നീളം</Text>
+          <Text style={styles.infoValue}>{week.length}</Text>
+          <Text style={styles.infoMesure}>{week.lengthmesure}</Text>
         </View>
-        <View
-          style={
-            [
-              styles.info,
-              {
-                backgroundColor: 'powderblue',
-                padding: 5
-              }
-            ]
-          }
-        >
-          <Text style={styles.infoTitle}>Weight: {week.weight}</Text>
-          <Text style={styles.infoValue}>Weight: {week.weight}</Text>
-          <Text style={styles.infoMesure}>Weight: {week.weight}</Text>
+        <View style={styles.info}>
+          <Text style={styles.infoTitle}>ഭാരം</Text>
+          <Text style={styles.infoValue}>{week.weight}</Text>
+          <Text style={styles.infoMesure}>{week.weightmesure}</Text>
         </View>
       </View>
     </View>
@@ -73,8 +52,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   infoTitle: {
-    fontSize: 25,
+    color: '#333',
   },
-  infoValue: {},
-  infoMesure: {},
+  infoValue: {
+    fontSize: 20,
+  },
+  infoMesure: {
+    color: '#aaa',
+  },
 });
