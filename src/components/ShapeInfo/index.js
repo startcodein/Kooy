@@ -18,16 +18,22 @@ const MyComponent = ({ week, getImage }) => (
       />
       <Text style={styles.shape}>{week.size}</Text>
       <View style={{ flexDirection: 'row' }}>
-        <View style={styles.info}>
-          <Text syle={styles.infoTitle}>നീളം</Text>
-          <Text style={styles.infoValue}>{week.length}</Text>
-          <Text style={styles.infoMesure}>{week.lengthmesure}</Text>
-        </View>
-        <View style={styles.info}>
-          <Text style={styles.infoTitle}>ഭാരം</Text>
-          <Text style={styles.infoValue}>{week.weight}</Text>
-          <Text style={styles.infoMesure}>{week.weightmesure}</Text>
-        </View>
+        {
+          week.length &&
+          <View style={styles.info}>
+            <Text syle={styles.infoTitle}>നീളം</Text>
+            <Text style={styles.infoValue}>{week.length}</Text>
+            <Text style={styles.infoMesure}>{week.lengthmesure}</Text>
+          </View>
+        }
+        {
+          week.weight &&
+          <View style={styles.info}>
+            <Text style={styles.infoTitle}>ഭാരം</Text>
+            <Text style={styles.infoValue}>{week.weight}</Text>
+            <Text style={styles.infoMesure}>{week.weightmesure}</Text>
+          </View>
+        }
       </View>
     </View>
   </Card>
