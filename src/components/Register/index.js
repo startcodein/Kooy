@@ -20,47 +20,61 @@ import { onSignIn } from './../../auth';
 class Register extends Component {
   constructor(props) {
     super(props);
-
-    this.onChange = this.onChange.bind(this);
+    this.state = {
+      name: '',
+      dueDate: ''
+    };
+    this.onChangeDatePicker = this.onChangeDatePicker.bind(this);
   }
 
   componentDidMount() {
-    this.props.navigation.navigate('Week');
+    // this.props.navigation.navigate('Week');
   }
 
-  onChange(date) {
+  onChangeDatePicker(date) {
     this.props.setDueDate(date);
+  }
+
+  onSubmit = event => {
+    // event.preventDefault();
+    console.warn('event');
+    this.props.setDueDate(this.state);
+  }
+
+  updateValue(text, field) {
+    console.warn(text, field);
+    if (field === 'name') {
+      this.setState({
+        name: text
+      });
+    } else if (field === 'date') {
+      this.setState({
+        dueDate: text,
+        startDate: text ? moment(text).subtract(40, 'w').format('DD-MMMM-YYYY') : ''
+      });
+    }
   }
 
   render() {
     const { navigation, initialProps, babyDetails } = this.props;
     return (
       <View style={styles.container}>
-        <Button
-          title="Login"
-          color="#fff"
-          backgroundColor="#03A9F4"
-          buttonStyle={{
-            marginTop: 20,
-            marginBottom: 10
-          }}
-          accessibilityLabel="Learn more about this purple button"
-          onPress={() => {
-            onSignIn().then(() => navigation.navigate('App'));
-          }}
-        />
-
-        <Card>
+        <Text>State: {JSON.stringify(this.state)}</Text>
+        <Text>babyDetails: {JSON.stringify(babyDetails)}</Text>
+        <Card
+          title="രജിസ്റ്റർ"
+        >
           <FormLabel>പേര്</FormLabel>
-          <FormInput placeholder="നിങ്ങളുടെ പേര്" />
-          <Text>babyDetails: {JSON.stringify(babyDetails)}</Text>
+          <FormInput
+            onChangeText={(text) => this.updateValue(text, 'name')}
+          />
           <FormLabel>പ്രവസവം പ്രതീക്ഷിക്കുന്ന തിയ്യതി</FormLabel>
           <DatePicker
             style={styles.datepicker}
             customStyles={{
               dateInput: styles.dateInput
             }}
-            date={babyDetails.dueDate}
+            date={this.state.dueDate}
             mode='date'
             format="DD-MMMM-YYYY"
             minDate={moment(new Date()).subtract(initialProps.minDueWeeks, 'w')}
@@ -69,9 +83,8 @@ class Register extends Component {
             cancelBtnText="Cancel"
             showIcon
             placeholder=" "
-            onDateChange={this.onChange}
+            onDateChange={(date) => this.updateValue(date, 'date')}
           />
-
           <Button
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="#03A9F4"
@@ -84,6 +97,12 @@ class Register extends Component {
             }}
           />
 
+          <Button
+            buttonStyle={{ marginTop: 20 }}
+            backgroundColor="#03A9F4"
+            title="Submit"
+            onPress={this.onSubmit}
+          />
           <Button
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="#03A9F4"
@@ -101,14 +120,15 @@ class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center'
   },
   datepicker: {
-    width: 295,
+    width: 300,
   },
   dateInput: {
     marginLeft: 20,
-    borderWidth: 0,
     alignItems: 'flex-start',
+    borderWidth: 0,
     borderBottomWidth: 1
   },
 });
