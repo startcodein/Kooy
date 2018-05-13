@@ -10,11 +10,16 @@ import {
 import { Card } from 'react-native-elements';
 
 const MyComponent = ({ week, getImage }) => (
-  <Card style={styles.container}>
-    <View>
+  <Card
+    style={styles.container}
+    title='കുഞ്ഞിന്റെ ഇപ്പോഴത്തെ വലിപ്പം'
+    titleStyle={{ fontWeight: '600', marginBottom: 10 }}
+    containerStyle={{ paddingTop: 10 }}
+  >
       <Image
         resizeMode="cover"
         source={getImage(week.week)}
+        style={styles.image}
       />
       <Text style={styles.shape}>{week.size}</Text>
       <View style={{ flexDirection: 'row' }}>
@@ -35,7 +40,6 @@ const MyComponent = ({ week, getImage }) => (
           </View>
         }
       </View>
-    </View>
   </Card>
 );
 
@@ -43,7 +47,13 @@ export default MyComponent;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    padding: 0
+  },
+  image: {
+    alignSelf: 'center',
+    marginTop: -15,
+    marginBottom: -15,
   },
   shape: {
     fontSize: 20,
@@ -58,12 +68,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   infoTitle: {
-    color: '#333',
+    color: '#333'
   },
   infoValue: {
-    fontSize: 20,
+    fontSize: 20
   },
   infoMesure: {
-    color: '#aaa',
+    color: '#aaa'
   },
 });
