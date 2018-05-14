@@ -5,9 +5,10 @@ import { Icon } from 'react-native-elements';
 import Register from './../components/Register';
 import CalculateDueDate from './../components/CalculateDueDate';
 import Dashboard from './../views/Dashboard';
-import Calendar from './../components/Calendar';
 import Week from './../views/Week';
-import Favourite from './../components/Favourite';
+import About from './../components/About';
+// import Calendar from './../components/Calendar';
+// import Favourite from './../components/Favourite';
 import Settings from './../components/Settings';
 
 export const App = TabNavigator({
@@ -33,6 +34,7 @@ export const App = TabNavigator({
       />
     },
   },
+/*
   Calendar: {
     screen: Calendar,
     navigationOptions: {
@@ -53,6 +55,17 @@ export const App = TabNavigator({
       />
     },
   },
+*/
+  About: {
+    screen: About,
+    navigationOptions: {
+      title: 'About',
+      tabBarLabel: 'About',
+      tabBarIcon: ({ tintColor }) => <Icon
+      name="ios-information-circle-outline" type="ionicon" size={33} color={tintColor}
+      />
+    },
+  },
   Settings: {
     screen: Settings,
     navigationOptions: {
@@ -62,7 +75,7 @@ export const App = TabNavigator({
         name="gear" type="evilicon" size={33} color={tintColor}
       />
     },
-  }
+  },
 }, {
   tabBarOptions: {
     activeTintColor: 'white',
