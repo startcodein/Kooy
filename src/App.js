@@ -7,7 +7,7 @@ export default class Kooy extends Component {
     return <Layout />;
   }
 }
-console.disableYellowBox = true;
+// console.disableYellowBox = true;
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,

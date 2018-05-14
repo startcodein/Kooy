@@ -22,13 +22,35 @@ class Register extends Component {
     super(props);
     this.state = {
       name: '',
-      dueDate: ''
+      dueDate: '',
+      startDate: ''
     };
     this.onChangeDatePicker = this.onChangeDatePicker.bind(this);
   }
 
   componentDidMount() {
     // this.props.navigation.navigate('Week');
+    // alert('hello mate');
+  }
+
+  componentWillUpdate() {
+    // this.props.navigation.navigate('Week');
+    // Alert.alert('hello mate');
+    // console.warn('event');
+  }
+
+  componentWillUpdate() {
+    // alert('kooy');
+  }
+
+  componentDidUpdate() {
+    // alert('kooy');
+    if (this.props.navigation.state.params) {
+      if (this.props.navigation.state.params.calculatedResult) {
+        console.warn('Kooooy');
+        console.warn(this.props.navigation.state.params.calculatedResult);
+      }
+    }
   }
 
   onChangeDatePicker(date) {
@@ -37,7 +59,7 @@ class Register extends Component {
 
   onSubmit = event => {
     // event.preventDefault();
-    console.warn('event');
+    // console.warn('event');
     this.props.setDueDate(this.state);
   }
 
@@ -59,7 +81,10 @@ class Register extends Component {
     const { navigation, initialProps, babyDetails } = this.props;
     return (
       <View style={styles.container}>
+        <Text>{JSON.stringify(navigation.state.params)}</Text>
+        <Text>------------------------------------</Text>
         <Text>State: {JSON.stringify(this.state)}</Text>
+        <Text>------------------------------------</Text>
         <Text>babyDetails: {JSON.stringify(babyDetails)}</Text>
         <Card
           title="രജിസ്റ്റർ"
@@ -140,7 +165,7 @@ const styles = StyleSheet.create({
   dateIcon: {
     position: 'absolute',
     right: 0,
-  }
+  },
 });
 
 const mapStateToProps = ({ appReducer, appContentReducer }) => ({

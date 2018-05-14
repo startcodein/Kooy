@@ -20,7 +20,8 @@ class CalculateDueDate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      periodDate: new Date()
+      startDate: '',
+      dueDate: '',
     };
 
     this.getDueDate = this.getDueDate.bind(this);
@@ -29,21 +30,26 @@ class CalculateDueDate extends Component {
 
   getDueDate(date) {
     this.setState({
-      periodDate: moment(date).format('DD-MMMM-YYYY'),
+      startDate: moment(date).format('DD-MMMM-YYYY'),
       dueDate: moment(date).add(40, 'w').format('DD-MMMM-YYYY')
     });
   }
 
   updateDueDate() {
-    this.props.setDueDate(this.state.dueDate);
-    this.props.navigation.goBack();
+    this.props.setDueDate(this.state);
+    // this.props.navigation.goBack();
+// onPress={() => {
+  /* 1. Navigate to the Details route with params */
+  this.props.navigation.navigate('Register', {
+    calculatedResult: this.state
+  });
+// }}
   }
 
   render() {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-
         <Icon
           containerStyle={{
             alignSelf: 'flex-end',
@@ -55,14 +61,16 @@ class CalculateDueDate extends Component {
           onPress={() => navigation.goBack()}
         />
 
-        <Card>
+        <Card style={{ backgroundColor: 'tomato' }}>
+          <Text>State: {JSON.stringify(this.state)}</Text>
           <FormLabel>അവസാനത്തെ ആർത്തവം</FormLabel>
           <DatePicker
             style={styles.datepicker}
             customStyles={{
-              dateInput: styles.dateInput
+              dateInput: styles.dateInput,
+              dateIcon: styles.dateIcon
             }}
-            date={this.state.periodDate ? this.state.periodDate : ''}
+            date={this.state.startDate}
             mode='date'
             format="DD-MMMM-YYYY"
             minDate={moment(new Date()).subtract(this.props.minWeeks, 'w')}
@@ -71,21 +79,22 @@ class CalculateDueDate extends Component {
             cancelBtnText="Cancel"
             showIcon={false}
             onDateChange={this.getDueDate}
+            placeholder=" "
+            showIcon
           />
-
           {
             moment(this.state.dueDate, 'DD-MMMM-YYYY', true).isValid() &&
-            <View>
-              <Text>തന്ന തിയതി അനുസരിച്ച് പ്രസവം നടക്കാവുന്ന തിയതി</Text>
-              <Text style={{ fontSize: 30, textAlign: 'center' }}>
-                {moment(this.state.dueDate).format('DD-MMMM-YYYY')}
-              </Text>
-            </View>
+              <Text style={styles.result}>
+                തന്ന തിയതി അനുസരിച്ച് പ്രസവം നടക്കാവുന്നത് <Text
+                  style={{ fontWeight: '600', color: '#e16d65' }}
+                >
+                  { moment(this.state.dueDate).format('DD-MMMM-YYYY')}</Text> ഇനായിരിക്കും </Text>
           }
           <Button
             buttonStyle={{ marginTop: 20 }}
-            backgroundColor="#03A9F4"
             title="Submit"
+            outline
+            color="#e16d65"
             onPress={this.updateDueDate}
           />
         </Card>
@@ -100,13 +109,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   datepicker: {
-    width: 295,
+    width: 300,
+    marginBottom: 10
   },
   dateInput: {
     marginLeft: 20,
-    borderWidth: 0,
     alignItems: 'flex-start',
-    // borderBottomWidth: 1
+    borderWidth: 0,
+    borderBottomWidth: 1
+  },
+  dateIcon: {
+    position: 'absolute',
+    right: 0
+  },
+  result: {
+    marginLeft: 20,
+    marginRight: 12
+  },
+  button: {
+
   }
 });
 

@@ -34,7 +34,7 @@ export const App = TabNavigator({
       />
     },
   },
-/*
+  /*
   Calendar: {
     screen: Calendar,
     navigationOptions: {
@@ -55,7 +55,7 @@ export const App = TabNavigator({
       />
     },
   },
-*/
+  */
   About: {
     screen: About,
     navigationOptions: {
