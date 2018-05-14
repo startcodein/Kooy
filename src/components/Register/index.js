@@ -72,7 +72,8 @@ class Register extends Component {
           <DatePicker
             style={styles.datepicker}
             customStyles={{
-              dateInput: styles.dateInput
+              dateInput: styles.dateInput,
+              dateIcon: styles.dateIcon
             }}
             date={this.state.dueDate}
             mode='date'
@@ -81,19 +82,24 @@ class Register extends Component {
             maxDate={moment(new Date()).add(initialProps.maxDueWeeks, 'w')}
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
-            showIcon
             placeholder=" "
             onDateChange={(date) => this.updateValue(date, 'date')}
+            showIcon
           />
           <Button
             buttonStyle={{ marginTop: 20 }}
             backgroundColor="#03A9F4"
             title="തിയ്യതി അറിയില്ല"
             onPress={() => navigation.navigate('CalculateDueDate')}
+            color="#e16d65"
+            fontSize={12}
+            outline
+            rounded
             buttonStyle={{
-              width: 150,
-              alignSelf: 'flex-end',
-              backgroundColor: 'tomato'
+              width: 130,
+              padding: 5,
+              alignSelf: 'center',
+              marginTop: 10,
             }}
           />
 
@@ -131,6 +137,10 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderBottomWidth: 1
   },
+  dateIcon: {
+    position: 'absolute',
+    right: 0,
+  }
 });
 
 const mapStateToProps = ({ appReducer, appContentReducer }) => ({
